@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan DOM 2 | Lampu Lalu Lintas</title>
     <style>
-
-        body{
+        body {
             display: flex;
             justify-content: center;
         }
-        .lalin{
+
+        .lalin {
             width: 400px;
             height: 1024px;
             padding: 25px;
@@ -24,7 +25,7 @@
             gap: 25px;
         }
 
-        .lalin div{
+        .lalin div {
             width: 324px;
             height: 324px;
             border: 1px solid white;
@@ -32,19 +33,20 @@
             flex: 1;
         }
 
-        .merah{
+        .merah {
             background: red;
         }
 
-        .kuning{
+        .kuning {
             background: yellow;
         }
 
-        .hijau{
+        .hijau {
             background: green;
         }
     </style>
 </head>
+
 <body>
     <!-- DOM 2 -->
     <div class="lalin">
@@ -61,26 +63,31 @@
         // 2sec mati kuning nyala hijau
         // hijau selama 3 detik back merah
 
-        lampuMerah.classList.add("merah")
-        
-        setTimeout(
-            () => {
-                lampuMerah.classList.remove("merah")
-                lampuKuning.classList.add("kuning")
-                setTimeout(
-                    () => {
-                        lampuKuning.classList.remove("kuning")
-                        lampuHijau.classList.add("hijau")
-                        setTimeout(
-                            () => {
-                                lampuHijau.classList.remove("hijau")
-                                lampuMerah.classList.add("merah")
-                            }, 3000
-                        )
-                    }, 2000
-                )
-            }, 3000 
-        )
+        function lalinOn() {
+            lampuMerah.classList.add("merah")
+
+            setTimeout(
+                () => {
+                    lampuMerah.classList.remove("merah")
+                    lampuKuning.classList.add("kuning")
+                    setTimeout(
+                        () => {
+                            lampuKuning.classList.remove("kuning")
+                            lampuHijau.classList.add("hijau")
+                            setTimeout(
+                                () => {
+                                    lampuHijau.classList.remove("hijau")
+                                    lalinOn()
+                                }, 3000
+                            )
+                        }, 2000
+                    )
+                }, 3000
+            )
+        }
+
+        lalinOn()
     </script>
 </body>
+
 </html>
