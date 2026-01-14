@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan DOM 2 | Lampu Lalu Lintas</title>
+    <style>
+
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .lalin{
+            width: 400px;
+            height: 1024px;
+            padding: 25px;
+            border: 1px solid black;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .lalin div{
+            width: 220px;
+            aspect-ratio: 1 / 1 ;
+            border: 1px solid black;
+            border-radius: 50%;
+            flex: 1;
+        }
+
+        .merah{
+            background: red;
+        }
+
+        .kuning{
+            background: yellow;
+        }
+
+        .hijau{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- DOM 2 -->
+    <div class="lalin">
+        <div id="merah"></div>
+        <div id="kuning"></div>
+        <div id="hijau"></div>
+    </div>
+
+    <script>
+        const lampuMerah = document.getElementById('merah')
+        const lampuKuning = document.getElementById('kuning')
+        const lampuHijau = document.getElementById('hijau')
+        // 3sec mati merah nyala kuning
+        // 2sec mati kuning nyala hijau
+        // hijau selama 3 detik back merah
+
+        lampuMerah.classList.add("merah")
+        
+        setTimeout(
+            () => {
+                lampuMerah.classList.remove("merah")
+                lampuKuning.classList.add("kuning")
+                setTimeout(
+                    () => {
+                        lampuKuning.classList.remove("kuning")
+                        lampuHijau.classList.add("hijau")
+                        setTimeout(
+                            () => {
+                                lampuHijau.classList.remove("hijau")
+                                lampuMerah.classList.add("merah")
+                            }, 3000
+                        )
+                    }, 2000
+                )
+            }, 3000 
+        )
+    </script>
+</body>
+</html>
