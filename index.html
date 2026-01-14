@@ -12,37 +12,44 @@
         }
 
         .lalin {
+            background: url('assets/img/pexels-pixabay-46287.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             width: 400px;
             height: 1024px;
             padding: 25px;
-            background: black;
+            /* background: black; */
             border: 1px solid black;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 25px;
+            gap: 1rem;
         }
 
         .lalin div {
-            width: 324px;
-            height: 324px;
-            border: 1px solid white;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
             flex: 1;
         }
-
-        .merah {
-            background: red;
+        
+        .grayscale{
+            backdrop-filter: grayscale(1);
         }
 
+        .merah {
+            backdrop-filter: grayscale(0);
+        }
+        
         .kuning {
-            background: yellow;
+            backdrop-filter: grayscale(0);
         }
 
         .hijau {
-            background: green;
+            backdrop-filter: grayscale(0);
         }
     </style>
 </head>
@@ -50,9 +57,9 @@
 <body>
     <!-- DOM 2 -->
     <div class="lalin">
-        <div id="merah"></div>
-        <div id="kuning"></div>
-        <div id="hijau"></div>
+        <div id="merah" class="grayscale"></div>
+        <div id="kuning" class="grayscale"></div>
+        <div id="hijau" class="grayscale"></div>
     </div>
 
     <script>
